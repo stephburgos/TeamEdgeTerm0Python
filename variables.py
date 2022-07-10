@@ -18,9 +18,11 @@ print(message)
 
 print("\n------------------- Challenge 1 -------------------\n")
 
-#print(f"Hi! My name is {name}")
-#print(f"I'm in the {grade}th grade.")
-#print(f"A fun fact about me is that {funFact}")
+name = "Stephanie"
+
+print(f"Hi! My name is {name}")
+print(f"I'm in the {grade}th grade.")
+print(f"A fun fact about me is that {funFact}")
 
 
 # **** Challenge 1: Problem 1 ****
