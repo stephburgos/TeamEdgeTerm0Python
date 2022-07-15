@@ -14,6 +14,7 @@
  #   5. NESTED: Write a function that logs every letter in a sentence
  # 
  # ***************************************************************/
+from json.encoder import INFINITY
 import random
 
 print("------------------- CHALLENGE 1 : COUNTER -------------------")
@@ -25,7 +26,8 @@ for x in range(11):
    
 
 #-->TODO: Write a loop that prints a happy birthday message for every year you have been alive.
-
+for x in range(16):
+    print("Happy Birthday #"+str(x))
 
 
 print("------------------- CHALLENGE 2 : ITERATOR ----------------------")
@@ -38,10 +40,11 @@ for x in colors:
     print("The color is: " + x)
 
 #-->TODO: Declare a list with at least 5 animals. You provide the animals.
-animals = []
+animals = ["cow", "frog", "bird", "dog", "cat"]
 
 #-->TODO: Print all the animals in the array with a for loop. 
-
+for animal in animals:
+    print(animal)
 
 
 print("------------------- CHALLENGE 3 : EVEN COUNTDOWN ------------------")
@@ -57,10 +60,20 @@ else:
     print(str(random) + " is odd!")
 
 #-->TODO: Write a function that counts BACKWARDS from 100 and prints only even numbers
+def even_countdown():
+    for num in range(100, 0, -1):
+        if num % 2 == 0:
+            print(num)
 
-
+even_countdown()
 #-->TODO: Write a function that counts BACKWARDS from the given random number and prints only odd numbers
 
+def odd_countdown(random):
+    for num in range(random, 0, -1):
+        if num % 2 != 0:
+            print(num)
+
+odd_countdown(random)
 
 print("------------------- CHALLENGE 4 : Finder ------------------")
 
@@ -72,15 +85,20 @@ else:
     print("No, that color is not one of my favorites")
 
 #-->TODO Declare a list of any strings you  want: cities, friends, movies, etc.
-
+cities = ["Athens", "New York", "Philedelphia", "Miami"]
 
 
 #-->TODO Write function to prompt the user to "Guess" if an element is present in your list. Store their response in a variable. 
 #   --> If their guess is in your list, print CONGRATULATIONS!
-
+def guess():
+    city = input('Type a city and see if it is in my list of cities! >> ')
+    if city in cities:
+        print("Yes, it's there!")
+    else:
+        print("No, that city is not in my list of cities")
 
 #-->TODO Call your function.
-
+guess()
 
 
 print("------------------- CHALLENGE 5 : Nested ------------------")
@@ -98,6 +116,45 @@ for color in colors:
 
 
 #-->TODO Write a function that prints every letter in a sentence that a user enters.
+def print_characters():
+    sentence = input("Please write me a sentence. I'll spell it back to you!")
+    sentence = sentence.split()
+    for word in sentence:
+        for letter in word:
+            print(" - " + letter)
+    #adding this for up-challenge below: 
+    find_min_word(sentence)
+    #find_min_word_multiple(sentence)
+
 
 
 #-->CHALLENGE: Let the user know which word is the shortest one!
+#There are better ways to solve this but I've kept to what the students would already know
+#An additional challenge would be to print all the words if there are multiple of the same min length
+def find_min_word(sentence):
+    min_length = INFINITY
+    min_word = ""
+    for word in sentence: 
+        if len(word) < min_length: 
+            min_length = len(word)
+            min_word = word
+    
+    print(f"The shortest word is {min_word}")
+
+#print_characters()
+
+#Not required. Fun up-challenge: 
+def find_min_word_multiple(sentence):
+    min_length = INFINITY
+    min_words = []
+    for word in sentence: 
+        if len(word) < min_length: 
+            min_length = len(word)
+            min_words = []
+            min_words.append(word)
+        elif len(word) == min_length: 
+            min_words.append(word)
+    print(f"The shortest word(s) is/are {min_words}")
+
+#Call print_characters() down here to avoid NameError for find_min_word functions:
+print_characters()
